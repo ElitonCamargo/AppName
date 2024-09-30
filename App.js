@@ -1,10 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+
+import dados from './service/dados.js';
+import CardCidade from './components/card_cidade'; // Corrigir o nome da importação
 
 export default function App() {
+  console.log(dados.state, dados.cities);
   return (
     <View style={styles.container}>
-      <Text>App Name Teste</Text>
+      <CardCidade nome="Tiete" uf="SP" /> {/* Corrigir o nome do componente */}
       <StatusBar style="auto" />
     </View>
   );
