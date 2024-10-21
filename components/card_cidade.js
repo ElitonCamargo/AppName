@@ -18,11 +18,11 @@ const styles = StyleSheet.create({
         padding: 10,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        backgroundColor: '#444'
+        backgroundColor: '#f1f1f1'
     },
     cidade: {
         fontSize: 18,
-        color: '#ff0202',
+        color: '#000000',
         fontWeight: '600'
     },
     uf: {
