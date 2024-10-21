@@ -14,11 +14,14 @@ export default CardCidade;
 
 const styles = StyleSheet.create({
     card: {
-        width: '100%',
+        width: 'auto',
         padding: 10,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        backgroundColor: '#f1f1f1'
+        backgroundColor: '#f1f1f1',
+        borderStyle: "solid",
+        borderWidth: 1,
+        borderColor: '#e70e0e'
     },
     cidade: {
         fontSize: 18,
