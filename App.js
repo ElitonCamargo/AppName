@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import { FlashList } from "@shopify/flash-list";
-
+import * as ddd from './service/ddd.js';
 import dados from './service/dados.js';
 import CardCidade from './components/card_cidade';
 
@@ -16,32 +16,27 @@ const exibirNaTela = ({cities,uf,index})=>{
 }
 
 export default function App() {
+  const valores = ddd.buscarDDD(15);
+  valores.then(x=>console.log(x));
+  
   const uf = dados.state;
   const cities = dados.cities;
   return (
     <View style={styles.container}>
 
-      <View
-        style={{
-          backgroundColor: '#0e0d0d',
-          width: '100%',
-          maxHeight: '100vh',
-          overflow: 'scroll'
-        }}
-      >
-      <FlashList
-        style={styles.flashList}
-        data={cities}
-        // renderItem={({ item }) => <Text>{item.title}</Text>}
-        renderItem={({item,index})=>
-          <CardCidade 
-              nome={item} 
-              uf={uf} 
-              key={index}
-          />
-        }
-        estimatedItemSize={200}
-      />
+      <View style={styles.lista}>
+        <FlashList
+          style={styles.flashList}
+          data={cities}
+          renderItem={({item,index})=>
+            <CardCidade 
+                nome={item} 
+                uf={uf} 
+                key={index}
+            />
+          }
+          estimatedItemSize={200}
+        />
       </View>
 
       <StatusBar style="auto" />
@@ -61,5 +56,11 @@ const styles = StyleSheet.create({
     borderStyle: "solid",
     borderWidth: 1,
     borderColor: '#e70e0e'
+  },
+  lista:{
+    backgroundColor: '#0e0d0d',
+    width: '100%',
+    maxHeight: '100vh',
+    overflow: 'scroll'
   }
 });
