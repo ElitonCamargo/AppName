@@ -2,25 +2,22 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import { FlashList } from "@shopify/flash-list";
 import * as ddd from './service/ddd.js';
-import dados from './service/dados.js';
+//import dados from './service/dados.js';
 import CardCidade from './components/card_cidade';
-
-const exibirNaTela = ({cities,uf,index})=>{
-  return(
-    <CardCidade 
-        nome={cities} 
-        uf={uf} 
-        key={index}
-    />
-  );
-}
+import React, { useState } from 'react';
 
 export default function App() {
-  const valores = ddd.buscarDDD(15);
-  valores.then(x=>console.log(x));
+  //const valores = ddd.buscarDDD(15);
+  //valores.then(x=>console.log(x));
+  const[uf, setUf] = useState('');
+  const[cities, setCities] = useState([]);
+  ddd.buscarDDDCallBack(11,dados=>{
+    setUf(dados.state);
+    setCities(dados.cities);
+  })
   
-  const uf = dados.state;
-  const cities = dados.cities;
+  //const uf = dados.state;
+  //const cities = dados.cities;
   return (
     <View style={styles.container}>
 
